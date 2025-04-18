@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -7,7 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, BrainCircuit } from "lucide-react";
 
 const products = [
   {
@@ -34,18 +33,29 @@ const products = [
 
 export const Navbar = () => {
   return (
-    <nav className="bg-background/90 backdrop-blur-sm sticky top-0 z-50 w-full border-b border-border">
+    <nav className="bg-background/90 backdrop-blur-sm sticky top-0 z-50 w-full border-b border-border/50">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="relative h-8 w-8 bg-primary rounded-full overflow-hidden transition-transform group-hover:scale-110">
-              <svg className="absolute inset-0 animate-pulse" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="50" r="40" fill="none" stroke="white" strokeWidth="2" />
-                <path d="M50,10 Q70,30 60,50 T50,90" fill="none" stroke="white" strokeWidth="2" className="animate-[dash_3s_ease-in-out_infinite]" />
-                <path d="M30,30 Q40,50 30,70" fill="none" stroke="white" strokeWidth="2" className="animate-[dash_3s_ease-in-out_infinite_0.5s]" />
-              </svg>
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="relative h-10 w-10 bg-gradient-to-br from-primary/80 to-accent rounded-xl overflow-hidden transition-transform group-hover:scale-110">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="relative w-full h-full">
+                  <svg className="absolute inset-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="30" r="4" fill="white" className="animate-pulse" />
+                    <circle cx="30" cy="50" r="4" fill="white" className="animate-pulse [animation-delay:200ms]" />
+                    <circle cx="70" cy="50" r="4" fill="white" className="animate-pulse [animation-delay:400ms]" />
+                    <circle cx="50" cy="70" r="4" fill="white" className="animate-pulse [animation-delay:600ms]" />
+                    
+                    <line x1="50" y1="30" x2="30" y2="50" stroke="white" strokeWidth="1" className="animate-[dash_3s_ease-in-out_infinite]" />
+                    <line x1="50" y1="30" x2="70" y2="50" stroke="white" strokeWidth="1" className="animate-[dash_3s_ease-in-out_infinite_0.2s]" />
+                    <line x1="30" y1="50" x2="50" y2="70" stroke="white" strokeWidth="1" className="animate-[dash_3s_ease-in-out_infinite_0.4s]" />
+                    <line x1="70" y1="50" x2="50" y2="70" stroke="white" strokeWidth="1" className="animate-[dash_3s_ease-in-out_infinite_0.6s]" />
+                  </svg>
+                  <BrainCircuit className="absolute inset-0 w-6 h-6 m-auto text-white/90 animate-pulse" />
+                </div>
+              </div>
             </div>
-            <span className="font-bold text-xl tracking-tight">CognitiveLab</span>
+            <span className="font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">CognitiveLab</span>
           </Link>
         </div>
 
@@ -75,10 +85,14 @@ export const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          <Button variant="ghost" size="sm" asChild>
-            <Link to="/try" className="hover:text-primary transition-colors">Try OmniParse</Link>
+          <Button variant="ghost" size="sm" asChild className="hover:bg-accent/10">
+            <Link to="/try" className="text-primary hover:text-accent transition-colors">Try OmniParse</Link>
           </Button>
-          <Button variant="default" size="sm" className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity">
+          <Button 
+            variant="default" 
+            size="sm" 
+            className="bg-gradient-to-r from-primary/90 to-accent/90 hover:from-primary hover:to-accent transition-all duration-300 shadow-lg shadow-accent/20"
+          >
             Book a Call
           </Button>
         </div>
